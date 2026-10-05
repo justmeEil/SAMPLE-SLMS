@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SLMS | Admin Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body class="admin-page">
+
+<div class="admin-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-brand">
+            <a href="#" class="logo">
+                <span class="logo-mark">S</span>
+                <span>SLMS</span>
+            </a>
+
+            <button id="sidebarClose" class="mobile-only-btn">
+                ×
+            </button>
+        </div>
+
+        <div class="sidebar-label">
+            MAIN MENU
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <button class="nav-item active" data-section="dashboard">
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </button>
+
+            <div class="nav-group">
+                <button class="nav-item group-toggle">
+                    <span class="nav-icon">♙</span>
+                    <span>User Management</span>
+                    <span class="arrow">›</span>
+                </button>
+
+                <div class="submenu">
+                    <button class="submenu-item" data-section="students">
+                        Students
+                    </button>
+
+                    <button class="submenu-item" data-section="instructors">
+                        Instructors
+                    </button>
+
+                    <button class="submenu-item" data-section="administrators">
+                        Administrators
+                    </button>
+                </div>
+            </div>
+
+            <button class="nav-item" data-section="courses">
+                <span class="nav-icon">▣</span>
+                <span>Course Management</span>
+            </button>
+
+            <button class="nav-item" data-section="subjects">
+                <span class="nav-icon">▤</span>
+                <span>Subject Management</span>
+            </button>
+
+            <button class="nav-item" data-section="classes">
+                <span class="nav-icon">▦</span>
+                <span>Class Management</span>
+            </button>
+
+            <button class="nav-item" data-section="materials">
+                <span class="nav-icon">▧</span>
+                <span>Learning Materials</span>
+            </button>
+
+            <button class="nav-item" data-section="announcements">
+                <span class="nav-icon">◇</span>
+                <span>Announcements</span>
+            </button>
+
+            <button class="nav-item" data-section="enrollments">
+                <span class="nav-icon">✓</span>
+                <span>Enrollment Management</span>
+            </button>
+
+            <button class="nav-item" data-section="records">
+                <span class="nav-icon">▥</span>
+                <span>Academic Records</span>
+            </button>
+
+            <button class="nav-item" data-section="reports">
+                <span class="nav-icon">◫</span>
+                <span>Reports & Analytics</span>
+            </button>
+
+            <button class="nav-item" data-section="settings">
+                <span class="nav-icon">⚙</span>
+                <span>System Settings</span>
+            </button>
+
+            <button class="nav-item" data-section="logs">
+                <span class="nav-icon">☷</span>
+                <span>Activity Logs</span>
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <button class="nav-item logout-btn" id="sidebarLogout">
+                <span class="nav-icon">↪</span>
+                <span>Logout</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- MAIN AREA -->
+    <div class="main-area">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <button id="sidebarToggle" class="hamburger">
+                ☰
+            </button>
+
+            <div class="topbar-title">
+                <span id="breadcrumb">Dashboard</span>
+            </div>
+
+            <div class="topbar-actions">
+
+                <div class="notification-wrapper">
+                    <button class="top-icon-btn" id="notificationBtn">
+                        ♧
+                        <span class="notification-badge" id="notificationCount">
+                            5
+                        </span>
+                    </button>
+
+                    <div class="notification-panel" id="notificationPanel">
+
+                        <div class="notification-header">
+                            <strong>Notifications</strong>
+                            <button id="clearNotifications">
+                                Clear
+                            </button>
+                        </div>
+
+                        <div id="notificationList">
+
+                            <div class="notification-item">
+                                <strong>5 pending enrollments</strong>
+                                <span>Enrollment Management</span>
+                            </div>
+
+                            <div class="notification-item">
+                                <strong>3 new users registered</strong>
+                                <span>User Management</span>
+                            </div>
+
+                            <div class="notification-item">
+                                <strong>System announcement</strong>
+                                <span>Announcements</span>
+                            </div>
+
+                            <div class="notification-item">
+                                <strong>New activity detected</strong>
+                                <span>Activity Logs</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-wrapper">
+
+                    <button class="profile-btn" id="profileBtn">
+                        <span class="avatar">A</span>
+
+                        <span class="profile-text">
+                            <strong>Administrator</strong>
+                            <small>System Admin</small>
+                        </span>
+
+                        <span>⌄</span>
+                    </button>
+
+                    <div class="profile-menu" id="profileMenu">
+
+                        <button data-section="settings">
+                            Profile
+                        </button>
+
+                        <button data-section="settings">
+                            Settings
+                        </button>
+
+                        <button id="profileLogout">
+                            Logout
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- CONTENT -->
+        <main class="admin-content">
+
+            <!-- DASHBOARD -->
+            <section class="content-section active-section" id="section-dashboard">
+
+                <div class="page-header">
+
+                    <div>
+                        <span class="eyebrow">ADMINISTRATION</span>
+                        <h1>Dashboard</h1>
+                        <p>
+                            Welcome back, Administrator. Here's what's
+                            happening in your SLMS.
+                        </p>
+                    </div>
+
+                    <button class="btn btn-primary" id="quickAddUser">
+                        + Add User
+                    </button>
+
+                </div>
+
+                <!-- STATISTICS -->
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-icon">♙</div>
+                        <div>
+                            <strong id="totalStudents">1,245</strong>
+                            <span>Total Students</span>
+                            <small>Registered students</small>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">♟</div>
+                        <div>
+                            <strong id="totalInstructors">48</strong>
+                            <span>Total Instructors</span>
+                            <small>Active instructors</small>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">▣</div>
+                        <div>
+                            <strong id="totalCourses">32</strong>
+                            <span>Total Courses</span>
+                            <small>Academic programs</small>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">▤</div>
+                        <div>
+                            <strong id="totalSubjects">86</strong>
+                            <span>Total Subjects</span>
+                            <small>Available subjects</small>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">▦</div>
+                        <div>
+                            <strong id="totalClasses">64</strong>
+                            <span>Active Classes</span>
+                            <small>Current classes</small>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">◷</div>
+                        <div>
+                            <strong id="pendingEnrollments">5</strong>
+                            <span>Pending Enrollments</span>
+                            <small>Requires attention</small>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ANALYTICS -->
+                <div class="analytics-grid">
+
+                    <div class="panel chart-panel large-panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <h3>Monthly Enrollment</h3>
+                                <span>Student enrollment statistics</span>
+                            </div>
+
+                            <select id="enrollmentPeriod">
+                                <option>2026</option>
+                                <option>2025</option>
+                                <option>2024</option>
+                            </select>
+                        </div>
+
+                        <div class="bar-chart" id="barChart">
+
+                            <div class="bar-column">
+                                <div class="bar" style="height:55%"></div>
+                                <span>Jan</span>
+                            </div>
+
+                            <div class="bar-column">
+                                <div class="bar" style="height:68%"></div>
+                                <span>Feb</span>
+                            </div>
+
+                            <div class="bar-column">
+                                <div class="bar" style="height:48%"></div>
+                                <span>Mar</span>
+                            </div>
+
+                            <div class="bar-column">
+                                <div class="bar" style="height:75%"></div>
+                                <span>Apr</span>
+                            </div>
+
+                            <div class="bar-column">
+                                <div class="bar" style="height:62%"></div>
+                                <span>May</span>
+                            </div>
+
+                            <div class="bar-column">
+                                <div class="bar" style="height:83%"></div>
+                                <span>Jun</span>
+                            </div>
+
+                            <div class="bar-column">
+                                <div class="bar" style="height:72%"></div>
+                                <span>Jul</span>
+                            </div>
+
+                            <div class="bar-column">
+                                <div class="bar" style="height:91%"></div>
+                                <span>Aug</span>
+                            </div>
+
+                            <div class="bar-column">
+                                <div class="bar" style="height:79%"></div>
+                                <span>Sep</span>
+                            </div>
+
+                            <div class="bar-column">
+                                <div class="bar" style="height:66%"></div>
+                                <span>Oct</span>
+                            </div>
+
+                            <div class="bar-column">
+                                <div class="bar" style="height:58%"></div>
+                                <span>Nov</span>
+                            </div>
+
+                            <div class="bar-column">
+                                <div class="bar" style="height:70%"></div>
+                                <span>Dec</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="panel chart-panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <h3>Course Statistics</h3>
+                                <span>Students by course</span>
+                            </div>
+                        </div>
+
+                        <div class="donut-wrapper">
+
+                            <div class="donut">
+                                <div>
+                                    <strong>1,245</strong>
+                                    <span>Students</span>
+                                </div>
+                            </div>
+
+                            <div class="legend">
+
+                                <div>
+                                    <i></i>
+                                    BSIT
+                                    <strong>48%</strong>
+                                </div>
+
+                                <div>
+                                    <i></i>
+                                    BSCS
+                                    <strong>31%</strong>
+                                </div>
+
+                                <div>
+                                    <i></i>
+                                    BSIS
+                                    <strong>21%</strong>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="analytics-grid">
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <h3>Student Performance</h3>
+                                <span>Average performance by month</span>
+                            </div>
+                        </div>
+
+                        <div class="line-chart">
+
+                            <div class="line-values">
+                                <span>100%</span>
+                                <span>80%</span>
+                                <span>60%</span>
+                                <span>40%</span>
+                                <span>20%</span>
+                                <span>0%</span>
+                            </div>
+
+                            <div class="line-area">
+                                <div class="line-path">
+                                    <span style="height:45%"></span>
+                                    <span style="height:53%"></span>
+                                    <span style="height:49%"></span>
+                                    <span style="height:68%"></span>
+                                    <span style="height:61%"></span>
+                                    <span style="height:76%"></span>
+                                    <span style="height:82%"></span>
+                                    <span style="height:88%"></span>
+                                </div>
+
+                                <div class="line-labels">
+                                    <span>Jan</span>
+                                    <span>Feb</span>
+                                    <span>Mar</span>
+                                    <span>Apr</span>
+                                    <span>May</span>
+                                    <span>Jun</span>
+                                    <span>Jul</span>
+                                    <span>Aug</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <h3>Active Users</h3>
+                                <span>Current system activity</span>
+                            </div>
+                        </div>
+
+                        <div class="activity-summary">
+
+                            <div>
+                                <strong>1,128</strong>
+                                <span>Students Online</span>
+                            </div>
+
+                            <div>
+                                <strong>42</strong>
+                                <span>Instructors Online</span>
+                            </div>
+
+                            <div>
+                                <strong>8</strong>
+                                <span>Administrators Online</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- STUDENTS -->
+            <section class="content-section" id="section-students">
+                <div class="page-header">
+                    <div>
+                        <span class="eyebrow">USER MANAGEMENT</span>
+                        <h1>Students</h1>
+                        <p>Manage student accounts and information.</p>
+                    </div>
+
+                    <button class="btn btn-primary add-user-btn" data-role="Student">
+                        + Add Student
+                    </button>
+                </div>
+
+                <div class="panel">
+
+                    <div class="table-toolbar">
+                        <div class="search-box">
+                            <span>⌕</span>
+                            <input
+                                type="text"
+                                class="user-search"
+                                placeholder="Search students..."
+                            >
+                        </div>
+
+                        <select class="status-filter user-status-filter">
+                            <option value="">All Status</option>
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                            <option value="Pending">Pending</option>
+                        </select>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Student ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Course</th>
+                                    <th>Year Level</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="studentsTable"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- INSTRUCTORS -->
+            <section class="content-section" id="section-instructors">
+                <div class="page-header">
+                    <div>
+                        <span class="eyebrow">USER MANAGEMENT</span>
+                        <h1>Instructors</h1>
+                        <p>Manage instructor accounts.</p>
+                    </div>
+
+                    <button class="btn btn-primary add-user-btn" data-role="Instructor">
+                        + Add Instructor
+                    </button>
+                </div>
+
+                <div class="panel">
+
+                    <div class="table-toolbar">
+                        <div class="search-box">
+                            <span>⌕</span>
+                            <input
+                                type="text"
+                                class="instructor-search"
+                                placeholder="Search instructors..."
+                            >
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Instructor ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Department</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="instructorsTable"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ADMINISTRATORS -->
+            <section class="content-section" id="section-administrators">
+
+                <div class="page-header">
+                    <div>
+                        <span class="eyebrow">USER MANAGEMENT</span>
+                        <h1>Administrators</h1>
+                        <p>Manage system administrators.</p>
+                    </div>
+
+                    <button class="btn btn-primary add-user-btn" data-role="Administrator">
+                        + Add Administrator
+                    </button>
+                </div>
+
+                <div class="panel">
+
+                    <div class="table-toolbar">
+                        <div class="search-box">
+                            <span>⌕</span>
+                            <input
+                                type="text"
+                                class="admin-search"
+                                placeholder="Search administrators..."
+                            >
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Admin ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="administratorsTable"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- COURSES -->
+            <section class="content-section" id="section-courses">
+
+                <div class="page-header">
+                    <div>
+                        <span class="eyebrow">ACADEMICS</span>
+                        <h1>Course Management</h1>
+                        <p>Manage academic programs and courses.</p>
+                    </div>
+
+                    <button class="btn btn-primary" id="addCourseBtn">
+                        + Add Course
+                    </button>
+                </div>
+
+                <div class="panel">
+
+                    <div class="table-toolbar">
+                        <div class="search-box">
+                            <span>⌕</span>
+                            <input
+                                type="text"
+                                id="courseSearch"
+                                placeholder="Search courses..."
+                            >
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Course Code</th>
+                                    <th>Course Name</th>
+                                    <th>Instructor</th>
+                                    <th>Students</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="coursesTable"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- SUBJECTS -->
+            <section class="content-section" id="section-subjects">
+
+                <div class="page-header">
+                    <div>
+                        <span class="eyebrow">ACADEMICS</span>
+                        <h1>Subject Management</h1>
+                        <p>Manage subjects and instructor assignments.</p>
+                    </div>
+
+                    <button class="btn btn-primary" id="addSubjectBtn">
+                        + Add Subject
+                    </button>
+                </div>
+
+                <div class="panel">
+
+                    <div class="table-toolbar">
+                        <div class="search-box">
+                            <span>⌕</span>
+                            <input
+                                type="text"
+                                id="subjectSearch"
+                                placeholder="Search subjects..."
+                            >
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Subject Code</th>
+                                    <th>Subject Name</th>
+                                    <th>Course</th>
+                                    <th>Units</th>
+                                    <th>Instructor</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="subjectsTable"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- CLASSES -->
+            <section class="content-section" id="section-classes">
+
+                <div class="page-header">
+                    <div>
+                        <span class="eyebrow">ACADEMICS</span>
+                        <h1>Class Management</h1>
+                        <p>Create and manage class schedules.</p>
+                    </div>
+
+                    <button class="btn btn-primary" id="addClassBtn">
+                        + Add Class
+                    </button>
+                </div>
+
+                <div class="panel">
+
+                    <div class="table-toolbar">
+                        <div class="search-box">
+                            <span>⌕</span>
+                            <input
+                                type="text"
+                                id="classSearch"
+                                placeholder="Search classes..."
+                            >
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Class Name</th>
+                                    <th>Subject</th>
+                                    <th>Instructor</th>
+                                    <th>Schedule</th>
+                                    <th>Room</th>
+                                    <th>School Year</th>
+                                    <th>Semester</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="classesTable"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- MATERIALS -->
+            <section class="content-section" id="section-materials">
+
+                <div class="page-header">
+                    <div>
+                        <span class="eyebrow">CONTENT</span>
+                        <h1>Learning Materials</h1>
+                        <p>Manage documents and other learning resources.</p>
+                    </div>
+
+                    <button class="btn btn-primary" id="addMaterialBtn">
+                        + Add Material
+                    </button>
+                </div>
+
+                <div class="panel">
+
+                    <div class="table-toolbar">
+
+                        <div class="search-box">
+                            <span>⌕</span>
+                            <input
+                                type="text"
+                                id="materialSearch"
+                                placeholder="Search materials..."
+                            >
+                        </div>
+
+                        <select id="materialFilter">
+                            <option value="">All Categories</option>
+                            <option>Documents</option>
+                            <option>Presentations</option>
+                            <option>Videos</option>
+                            <option>Links</option>
+                            <option>Assignments</option>
+                        </select>
+
+                    </div>
+
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Course</th>
+                                    <th>Subject</th>
+                                    <th>File / Link</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="materialsTable"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ANNOUNCEMENTS -->
+            <section class="content-section" id="section-announcements">
+
+                <div class="page-header">
+                    <div>
+                        <span class="eyebrow">COMMUNICATION</span>
+                        <h1>Announcements</h1>
+                        <p>Create and manage system announcements.</p>
+                    </div>
+
+                    <button class="btn btn-primary" id="addAnnouncementBtn">
+                        + Create Announcement
+                    </button>
+                </div>
+
+                <div class="panel">
+
+                    <div class="table-toolbar">
+                        <div class="search-box">
+                            <span>⌕</span>
+                            <input
+                                type="text"
+                                id="announcementSearch"
+                                placeholder="Search announcements..."
+                            >
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Target Audience</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="announcementsTable"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ENROLLMENTS -->
+            <section class="content-section" id="section-enrollments">
+
+                <div class="page-header">
+                    <div>
+                        <span class="eyebrow">REGISTRATION</span>
+                        <h1>Enrollment Management</h1>
+                        <p>Review and process student enrollments.</p>
+                    </div>
+                </div>
+
+                <div class="panel">
+
+                    <div class="table-toolbar">
+                        <select id="enrollmentFilter">
+                            <option value="">All Status</option>
+                            <option>Pending</option>
+                            <option>Approved</option>
+                            <option>Rejected</option>
+                        </select>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Enrollment ID</th>
+                                    <th>Student</th>
+                                    <th>Course</th>
+                                    <th>Year Level</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="enrollmentsTable"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- RECORDS -->
+            <section class="content-section" id="section-records">
+
+                <div class="page-header">
+                    <div>
+                        <span class="eyebrow">ACADEMIC RECORDS</span>
+                        <h1>Academic Records</h1>
+                        <p>View student grades and academic information.</p>
+                    </div>
+                </div>
+
+                <div class="panel">
+
+                    <div class="table-toolbar">
+
+                        <div class="search-box">
+                            <span>⌕</span>
+                            <input
+                                type="text"
+                                id="recordSearch"
+                                placeholder="Search records..."
+                            >
+                        </div>
+
+                    </div>
+
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Student</th>
+                                    <th>Subject</th>
+                                    <th>Grade</th>
+                                    <th>Units</th>
+                                    <th>Semester</th>
+                                    <th>Academic Year</th>
+                                    <th>Remarks</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="recordsTable"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- REPORTS -->
+            <section class="content-section" id="section-reports">
+
+                <div class="page-header">
+                    <div>
+                        <span class="eyebrow">ANALYTICS</span>
+                        <h1>Reports & Analytics</h1>
+                        <p>Generate and manage academic reports.</p>
+                    </div>
+                </div>
+
+                <div class="report-grid">
+
+                    <div class="report-card">
+                        <span>01</span>
+                        <h3>Student Enrollment Report</h3>
+                        <p>View student enrollment statistics.</p>
+                        <button class="btn btn-outline generate-report">
+                            Generate Report
+                        </button>
+                    </div>
+
+                    <div class="report-card">
+                        <span>02</span>
+                        <h3>Instructor Report</h3>
+                        <p>View instructor information and assignments.</p>
+                        <button class="btn btn-outline generate-report">
+                            Generate Report
+                        </button>
+                    </div>
+
+                    <div class="report-card">
+                        <span>03</span>
+                        <h3>Course Report</h3>
+                        <p>View available academic courses.</p>
+                        <button class="btn btn-outline generate-report">
+                            Generate Report
+                        </button>
+                    </div>
+
+                    <div class="report-card">
+                        <span>04</span>
+                        <h3>Grade Report</h3>
+                        <p>View academic grades and remarks.</p>
+                        <button class="btn btn-outline generate-report">
+                            Generate Report
+                        </button>
+                    </div>
+
+                    <div class="report-card">
+                        <span>05</span>
+                        <h3>Student Performance Report</h3>
+                        <p>Analyze student academic performance.</p>
+                        <button class="btn btn-outline generate-report">
+                            Generate Report
+                        </button>
+                    </div>
+
+                    <div class="report-card">
+                        <span>06</span>
+                        <h3>User Activity Report</h3>
+                        <p>Review system activity logs.</p>
+                        <button class="btn btn-outline generate-report">
+                            Generate Report
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="panel report-output" id="reportOutput">
+                    <h3>Report Preview</h3>
+                    <p>
+                        Select a report above to generate a frontend
+                        report preview.
+                    </p>
+                </div>
+
+                <div class="report-actions">
+                    <button class="btn btn-primary" id="printReport">
+                        Print Report
+                    </button>
+
+                    <button class="btn btn-outline" id="exportReport">
+                        Export Report
+                    </button>
+                </div>
+
+            </section>
+
+            <!-- SETTINGS -->
+            <section class="content-section" id="section-settings">
+
+                <div class="page-header">
+                    <div>
+                        <span class="eyebrow">CONFIGURATION</span>
+                        <h1>System Settings</h1>
+                        <p>Configure SLMS information and preferences.</p>
+                    </div>
+                </div>
+
+                <form id="settingsForm">
+
+                    <div class="settings-grid">
+
+                        <div class="panel">
+
+                            <div class="panel-header">
+                                <div>
+                                    <h3>School Information</h3>
+                                    <span>Basic school details</span>
+                                </div>
+                            </div>
+
+                            <div class="form-grid">
+
+                                <div class="form-group">
+                                    <label>School Name</label>
+                                    <input type="text" id="schoolName">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>School Email</label>
+                                    <input type="email" id="schoolEmail">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Contact Number</label>
+                                    <input type="text" id="schoolContact">
+                                </div>
+
+                                <div class="form-group full">
+                                    <label>School Address</label>
+                                    <textarea id="schoolAddress"></textarea>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="panel">
+
+                            <div class="panel-header">
+                                <div>
+                                    <h3>System Settings</h3>
+                                    <span>Academic system configuration</span>
+                                </div>
+                            </div>
+
+                            <div class="form-grid">
+
+                                <div class="form-group">
+                                    <label>System Name</label>
+                                    <input type="text" id="systemName">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Academic Year</label>
+                                    <input type="text" id="academicYear">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Current Semester</label>
+                                    <select id="currentSemester">
+                                        <option>1st Semester</option>
+                                        <option>2nd Semester</option>
+                                        <option>Summer</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group toggle-group">
+                                    <label>Maintenance Mode</label>
+
+                                    <label class="switch">
+                                        <input type="checkbox" id="maintenanceMode">
+                                        <span></span>
+                                    </label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="panel">
+
+                            <div class="panel-header">
+                                <div>
+                                    <h3>Admin Profile</h3>
+                                    <span>Administrator information</span>
+                                </div>
+                            </div>
+
+                            <div class="form-grid">
+
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" id="adminName">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" id="adminEmail">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Username</label>
+                                    <input type="text" id="adminUsername">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Change Password</label>
+                                    <input type="password" id="adminPassword">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        Save Settings
+                    </button>
+
+                </form>
+
+            </section>
+
+            <!-- LOGS -->
+            <section class="content-section" id="section-logs">
+
+                <div class="page-header">
+                    <div>
+                        <span class="eyebrow">SYSTEM MONITORING</span>
+                        <h1>Activity Logs</h1>
+                        <p>Monitor administrative activities.</p>
+                    </div>
+
+                    <button class="btn btn-outline" id="clearLogs">
+                        Clear Logs
+                    </button>
+                </div>
+
+                <div class="panel">
+
+                    <div class="table-toolbar">
+                        <div class="search-box">
+                            <span>⌕</span>
+                            <input
+                                type="text"
+                                id="logSearch"
+                                placeholder="Search logs..."
+                            >
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>User</th>
+                                    <th>Action</th>
+                                    <th>Module</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="logsTable"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</div>
+
+<!-- USER MODAL -->
+<div class="modal-overlay" id="userModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+            <div>
+                <span class="eyebrow">USER MANAGEMENT</span>
+                <h2 id="userModalTitle">Add User</h2>
+            </div>
+
+            <button class="modal-close" data-close="userModal">
+                ×
+            </button>
+        </div>
+
+        <form id="userForm">
+
+            <input type="hidden" id="userId">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" id="firstName" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Middle Name</label>
+                    <input type="text" id="middleName">
+                </div>
+
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" id="lastName" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="username" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password">
+                </div>
+
+                <div class="form-group">
+                    <label>Role</label>
+                    <select id="role" required>
+                        <option value="Student">Student</option>
+                        <option value="Instructor">Instructor</option>
+                        <option value="Administrator">Administrator</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Contact Number</label>
+                    <input type="text" id="contactNumber">
+                </div>
+
+                <div class="form-group">
+                    <label>Status</label>
+                    <select id="status">
+                        <option>Active</option>
+                        <option>Inactive</option>
+                        <option>Pending</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="btn btn-outline" data-close="userModal">
+                    Cancel
+                </button>
+
+                <button type="submit" class="btn btn-primary">
+                    Save User
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<!-- GENERIC MODAL -->
+<div class="modal-overlay" id="genericModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+            <div>
+                <span class="eyebrow">SLMS</span>
+                <h2 id="genericModalTitle">Add Record</h2>
+            </div>
+
+            <button class="modal-close" data-close="genericModal">
+                ×
+            </button>
+        </div>
+
+        <form id="genericForm">
+
+            <div id="genericFields" class="form-grid"></div>
+
+            <div class="modal-actions">
+                <button type="button" class="btn btn-outline" data-close="genericModal">
+                    Cancel
+                </button>
+
+                <button type="submit" class="btn btn-primary">
+                    Save
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<!-- CONFIRM MODAL -->
+<div class="modal-overlay" id="confirmModal">
+
+    <div class="modal small-modal">
+
+        <div class="confirm-icon">!</div>
+
+        <h2 id="confirmTitle">Confirm Action</h2>
+
+        <p id="confirmMessage">
+            Are you sure you want to continue?
+        </p>
+
+        <div class="modal-actions">
+
+            <button class="btn btn-outline" data-close="confirmModal">
+                Cancel
+            </button>
+
+            <button class="btn btn-primary" id="confirmAction">
+                Confirm
+            </button>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="script.js"></script>
+<script src="admin.js"></script>
+
+</body>
+</html>

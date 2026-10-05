@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLMS | Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+
+<div class="login-wrapper">
+
+    <div class="login-brand">
+        <a href="index.html" class="logo">
+            <span class="logo-mark">S</span>
+            <span>SLMS</span>
+        </a>
+
+        <h1>Welcome Back</h1>
+
+        <p>
+            Sign in to access the Student Learning Management System.
+        </p>
+
+        <div class="login-info">
+            <strong>Frontend Prototype</strong>
+            <span>
+                Authentication is simulated using JavaScript and
+                localStorage.
+            </span>
+        </div>
+    </div>
+
+    <div class="login-card">
+
+        <div class="login-card-heading">
+            <span class="eyebrow">ACCOUNT LOGIN</span>
+            <h2>Sign in to SLMS</h2>
+        </div>
+
+        <div id="loginMessage" class="form-message"></div>
+
+        <form id="loginForm">
+
+            <div class="form-group">
+                <label for="loginUsername">Username or Email</label>
+                <input
+                    type="text"
+                    id="loginUsername"
+                    placeholder="Enter username or email"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+
+                <div class="password-wrapper">
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="Enter password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        id="togglePassword"
+                        class="password-toggle"
+                    >
+                        Show
+                    </button>
+                </div>
+            </div>
+
+            <div class="login-options">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="rememberMe">
+                    <span>Remember Me</span>
+                </label>
+
+                <a href="#" id="forgotPassword">
+                    Forgot Password?
+                </a>
+            </div>
+
+            <button type="submit" class="btn btn-primary full-btn">
+                Login
+            </button>
+
+        </form>
+
+        <div class="demo-accounts">
+            <h4>Demo Accounts</h4>
+
+            <div>
+                <strong>Admin:</strong>
+                admin / admin123
+            </div>
+
+            <div>
+                <strong>Instructor:</strong>
+                instructor / instructor123
+            </div>
+
+            <div>
+                <strong>Student:</strong>
+                student / student123
+            </div>
+        </div>
+
+        <a href="index.html" class="back-link">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
